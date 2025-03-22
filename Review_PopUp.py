@@ -106,16 +106,34 @@ def show_popUp(cnt, ease):
 
     window = QDialog(mw)
     window.setWindowIcon(QIcon(join(addon_path, 'user_files/images') + "/icon.png"))
+    
+    # Get the screen where the main window is displayed
+    screen = mw.window().screen()
+    # Get the available screen geometry (accounts for taskbars/docks)
+    screen_rect = screen.availableGeometry()
+    screen_width = screen_rect.width()
+    screen_height = screen_rect.height()
+    
+    # Set window to be frameless
+    window.setWindowFlags(Qt.WindowType.FramelessWindowHint | Qt.WindowType.Popup | Qt.WindowType.NoDropShadowWindowHint)
+    
+    # Set the size to match the screen dimensions
+    window.setFixedSize(screen_width, screen_height)
+    
+    # Position it at the top-left of the available screen area
+    window.move(screen_rect.x(), screen_rect.y())
+    
     header = QLabel()
     header.setAlignment(Qt.AlignmentFlag.AlignCenter)
     header.setText("<div style='font-size: {}px; font-family: {};'> {} </div>".format(headerText_fontSize, headerText_fontStyle, header_text))
     image = QLabel()
     pixmap = QPixmap(image_folder + image_name)
-    max_height = min(pixmap.height(), 1024)
-    max_width = min(pixmap.width(), 1024)
-    picture = pixmap.scaled(max_width, max_height, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
+    
+    # Use screen dimensions for scaling instead of fixed 1024px limits
+    picture = pixmap.scaled(screen_width, screen_height, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
     image.setAlignment(Qt.AlignmentFlag.AlignCenter)
     image.setPixmap(picture)
+    
     layout = QVBoxLayout()
     if show_header:
         layout.addWidget(header)
@@ -126,6 +144,10 @@ def show_popUp(cnt, ease):
     show_onGood = config["Show on Good"]
     show_onEasy = config["Show on Easy"]
     window.setLayout(layout)
+    
+    # Add key press event to close on any key
+    window.keyPressEvent = lambda event: window.hide() if event.key() != Qt.Key.Key_unknown else None
+    
     if not show_image and not show_header:
         return
     elif ease == 1 and show_onAgain:
