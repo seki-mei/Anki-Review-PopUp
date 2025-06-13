@@ -105,6 +105,7 @@ def show_popUp(cnt, ease):
     image_name = '/{}'.format(random.choice(imageName_list))
 
     window = QDialog(mw)
+
     window.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
     window.setWindowFlags(
         Qt.WindowType.FramelessWindowHint |
