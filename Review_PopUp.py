@@ -105,6 +105,15 @@ def show_popUp(cnt, ease):
     image_name = '/{}'.format(random.choice(imageName_list))
 
     window = QDialog(mw)
+    window.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
+    window.setWindowFlags(
+        Qt.WindowType.FramelessWindowHint |
+        Qt.WindowType.Popup |
+        Qt.WindowType.NoDropShadowWindowHint |
+        Qt.WindowType.WindowStaysOnTopHint
+    )
+    window.setStyleSheet("background: transparent;")
+
     window.setWindowIcon(QIcon(join(addon_path, 'user_files/images') + "/icon.png"))
     
     # Get the screen where the main window is displayed
