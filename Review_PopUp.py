@@ -23,9 +23,9 @@ def _play_tags(self, tags):
 def myPopUp(self, ease):
     cnt = self.mw.col.sched.answerButtons(self.card)
     popUp_Chance = config["Pop-Up Chance"]
-    show_random = random.choice(range((101 - popUp_Chance)))
-    if show_random == 0 and popUp_Chance != 0:
-        play_audio = config["Play Audio"]
+    show_random = random.randint(0, 100)
+    if show_random < popUp_Chance:
+    play_audio = config["Play Audio"]
         play_videoGif = config["Play Video/GIF"]
         if self.state == "answer":
             if cnt == 3:
