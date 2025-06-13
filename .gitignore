@@ -1,6 +1,2 @@
 meta.json
 __pycache__
-# Ignore everything in user_files/
-user_files/**
-# But not directories inside user_files/
-!user_files/**/
