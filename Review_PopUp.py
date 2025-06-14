@@ -140,7 +140,11 @@ def show_popUp(cnt, ease):
     pixmap = QPixmap(image_folder + image_name)
     
     # Use screen dimensions for scaling instead of fixed 1024px limits
-    picture = pixmap.scaled(screen_width, screen_height, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
+    # Avoid upscaling: only shrink if image is too big
+    target_width = min(pixmap.width(), screen_width)
+    target_height = min(pixmap.height(), screen_height)
+    picture = pixmap.scaled(target_width, target_height, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
+    
     image.setAlignment(Qt.AlignmentFlag.AlignCenter)
     image.setPixmap(picture)
     
