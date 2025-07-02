@@ -1,0 +1,10 @@
+meta.json
+__pycache__
+*.png
+*.webp
+*.jpg
+*.jpeg
+*.avif
+*.gif
+*.mp4
+*.webm
