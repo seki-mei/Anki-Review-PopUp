@@ -1,6 +1,5 @@
 meta.json
 __pycache__
-<<<<<<< HEAD
 *.png
 *.webp
 *.jpg
@@ -11,5 +10,3 @@ __pycache__
 *.webm
 *.ogg
 *.mp3
-=======
->>>>>>> 680017622a9b5f731590c13a7651ff131eae62a5
