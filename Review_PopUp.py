@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #// auth_ Mamad
 #// Copyright (c) 2020 - 2023 Mamad
 
@@ -190,7 +189,6 @@ def show_popUp(cnt, ease):
 
 
 Reviewer._answerCard = wrap(Reviewer._answerCard, myPopUp, 'before')
-=======
 #// auth_ Mamad
 #// Copyright (c) 2020 - 2023 Mamad
 
@@ -370,4 +368,3 @@ def show_popUp(cnt, ease):
 
 
 Reviewer._answerCard = wrap(Reviewer._answerCard, myPopUp, 'before')
->>>>>>> 680017622a9b5f731590c13a7651ff131eae62a5
